@@ -8,7 +8,9 @@ import { TodoItem } from '../components/TodoItem'
 import { TodoList } from '../components/TodoList'
 import { Modal } from '../modal';
 import { TodoForm } from '../components/TodoForm';
-
+import {TodosError} from '../components/TodosError'
+import {TodosLoading} from '../components/TodosLoading'
+import {EmptyTodos} from '../components/EmptyTodos'
 
 
 
@@ -42,10 +44,10 @@ function AppUI() {
             <TodoList>
 
 
-                {error && <p> Error al cargar tareas...</p>}
-                {loading && <p> Cargando lista de tareas...</p>}
+                {error && <TodosError error = {error}/>}
+                {loading && <TodosLoading />}
 
-                {(!loading && !SearchedToDos.length) && <p> Crea tu primer tarea! </p>}
+                {(!loading && !SearchedToDos.length) && < EmptyTodos/>}
 
 
                 {SearchedToDos.map(items => (
